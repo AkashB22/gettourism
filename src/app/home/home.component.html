@@ -1,0 +1,116 @@
+<main role="Home" class="home">
+<!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">GETZ Tourism Ltd.</h1>
+      <p>Official Online travel and tours Booking site operated by GETZ Tourism LTD,India.</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-3 border border-0 bg pb-5">
+        <h2>Check Availability</h2>
+          <form>
+            <div class="form-group">
+              <label for="From">From: </label>
+              <select class="form-control" id="state">
+                <option>Coimbatore</option>
+                <option>Bangalore</option>
+                <option>Chennai</option>
+                <option>Pondicherry</option>
+                <option>Mumbai</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="To">To: </label>
+              <select class="form-control" id="state">
+                <option>Bangalore</option>
+                <option>Chennai</option>
+                <option>Coimbatore</option>
+                <option>Pondicherry</option>
+                <option>Mumbai</option>
+              </select>
+            </div>
+            <!-- <div class="form-group">
+              <label for="pgName">Select a PG</label>
+              <select class="form-control" id="pgName">
+                <option>Venkateshwara PG for gents</option>
+                <option>SLN-1 Ladies PG</option>
+                <option>Venkateshwara PG for gents</option>
+              </select>
+            </div> -->
+            <div class="form-group">
+              <label for="members">Select Number Of Members</label>
+              <select class="form-control" id="members">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <!-- <div class="form-group">
+              <label for="sharing">Select Your Required Sharing</label>
+              <select multiple class="form-control" id="sharing">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div> -->
+            <div class="form-group">
+              <label for="onwardsDate">Onward Date</label>
+              <input type="date" class="form-control" id="onwardsDate">
+            </div>
+            <div class="form-group">
+                <label for="returnDate">Return(Optional)</label>
+                <input type="date" class="form-control" id="returnDate">
+              </div>
+            <button type="submit" class="btn btn-success">Book Now</button>
+          </form>
+      </div>
+      <div class="col-md pt-5 pb-5 bg">
+        <div class="row">
+          <div class="col-md-3 text-center">
+            <!-- <img [src]="imageUrl" class="img-thumbnail" alt="A generic square placeholder image with rounded corners in a figure."> -->
+            <div id="cf">
+              <img class="bottom img-thumbnail" src="/assets/image/booknow.png" />
+              <img class=" top img-thumbnail" src="/assets/image/1.jpg" />
+            </div>
+          </div>
+          <div class="col-md mt-5">
+            <p><strong>GETZ Tourism Online Ltd.</strong>
+              Official Online travel and tours Booking site operated by GETZ Tourism LTD,India.
+              Book a PG in lowest affordable cost in few steps</p>
+            <ul>
+                <li>Enter login details</li>
+                <li>Check Referral Code status</li>
+                <li>Verify occupancy details</li>
+                <li>See Features</li>
+                <li>Book a Desire Rooms and apply a coupon code</li>
+                <li>Get a Quote</li>
+                <li>Within 24 hours get a approved booking from destination PG</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md mt-5">
+            <form class="form-inline">
+                <div class="form-group">
+                  <label for="referralCode" class="sr-only">Enter Your Referral Code</label>
+                  <input type="text" readonly class="form-control-plaintext" id="referralCode" value="Enter Your Referral Code">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <label for="referralCode" class="sr-only">Referral Code</label>
+                  <input type="password" class="form-control" id="referralCode" placeholder="Referral Code">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+              </form>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div> <!-- /container -->
+</main>

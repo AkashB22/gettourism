@@ -1,0 +1,19 @@
+.bg{
+    background-color: #e9ecef;
+}
+.home{
+    background-color: #f7f7f7;
+}
+#cf {
+    position:relative;
+}
+  
+#cf img {
+    position:absolute;
+    left:0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+#cf img.top:hover {
+opacity:0;
+}
