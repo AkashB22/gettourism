@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/pg-project', function(err){
+mongoose.connect('mongodb://localhost/get-tourism', function(err){
     if(err) throw err;
     console.log('mongodb connected locally');
 });
