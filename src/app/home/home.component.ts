@@ -8,12 +8,18 @@ import { Location } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
   imageUrl:String;
+  flag:boolean;
   constructor(private domSanitizer : DomSanitizer, location:Location) {
-    console.log(location.path());
+    //console.log(location.path());
+
   }
 
   ngOnInit() {
     this.imageUrl = '/assets/image/booknow.png';
+    this.flag = false;
+    setTimeout(()=>{
+      this.flag = true;
+    },3000);
   }
 
 }
