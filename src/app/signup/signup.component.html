@@ -14,7 +14,7 @@
             <div class="col-md-6 mb-3">
               <label for="firstName">First name</label>
               <input type="text" class="form-control" id="firstName" placeholder="" value="" required [(ngModel)]="newUser.firstName" name="firstName" #firstName="ngModel">
-              <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+              <div [hidden]="firstName.valid || firstName.untouched" class="alert alert-danger">
                 Valid first name is required.
               </div>
             </div>
@@ -65,21 +65,19 @@
             </div>
   
           <div class="row">
-            <div class="col-md-5 mb-3">
+            <div class="col-md-5 mb-3 form-group">
               <label for="country">Country</label>
-              <select class="custom-select d-block w-100" id="country" required [(ngModel)]="country" name="country" #country="ngModel">
-                <option value="">Choose...</option>
-                <option>United States</option>
+              <select class="custom-select d-block w-100 form-control" id="country" required [(ngModel)]="newUser.country" name="country" #country="ngModel">
+                <option *ngFor="let country of countries" [value]="country">{{country}}</option>
               </select>
-              <div [hidden]="country.valid || country.pristine" class="alert alert-danger">
+              <div [hidden]="country.valid || country.valid" class="alert alert-danger">
                 Please select a valid country.
               </div>
             </div>
             <div class="col-md-4 mb-3">
               <label for="state">State</label>
-              <select class="custom-select d-block w-100" id="state" required [(ngModel)]="state" name="state">
-                <option value="">Choose...</option>
-                <option>California</option>
+              <select class="custom-select d-block w-100" id="state" required [(ngModel)]="newUser.state" name="state">
+                <option *ngFor="let state of states" [value]="state" >{{state}}</option>
               </select>
               <div class="invalid-feedback">
                 Please provide a valid state.
