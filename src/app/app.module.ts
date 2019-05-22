@@ -25,7 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SafePipe,
     SignupComponent,
     LoginComponent,
-    CreateOrderComponent
+    CreateOrderComponent,
   ],
   imports: [
     BrowserModule,

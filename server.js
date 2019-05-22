@@ -4,7 +4,7 @@ const path = require('path');
 
 const api = require('./server/routes/api');
 
-const port = 4002;
+const port = 30303;
 
 const app = express();
 
@@ -20,5 +20,5 @@ app.get('*', function(req,res){
 });
 
 app.listen(port, function(){
-    console.log('server running in port 4000');
+    console.log('server running in port 30303');
 })
