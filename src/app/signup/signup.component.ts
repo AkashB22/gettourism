@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms'
-import { NewUser } from '../new-user'
-import { AddnewuserService } from '../addnewuser.service'
+import { Component, OnInit, HostListener } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { NewUser } from '../new-user';
+import { AddnewuserService } from '../addnewuser.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-signup',
@@ -10,8 +11,8 @@ import { AddnewuserService } from '../addnewuser.service'
   providers: [AddnewuserService]
 })
 export class SignupComponent implements OnInit {
-  countries : string[] = ['', 'india', 'japan', 'singapore'];
-  states : string[] = ['', 'coimbatore', 'chennai'];
+  countries : string[] = ['india', 'japan', 'singapore'];
+  states : string[] = ['coimbatore', 'chennai'];
   newUser = new NewUser(
     "", 
     "", 
@@ -22,8 +23,11 @@ export class SignupComponent implements OnInit {
     "", 
     "", 
     );
+    formError: boolean = false;
+    error: String;
+    windowScrolled: Boolean;
 
-  constructor(private addNewUserService : AddnewuserService) { }
+  constructor(private addNewUserService : AddnewuserService, private router : Router) { }
 
   ngOnInit() {
     
@@ -32,7 +36,19 @@ export class SignupComponent implements OnInit {
     console.log(this.newUser);
     this.addNewUserService.addNewUser(this.newUser)
       .subscribe((user) => {
-        console.log(user);
+        this.error = user.error;
+        if(this.error){
+          this.formError = true;
+          console.log(this.error);
+        } else{
+          this.formError = false;
+          
+          this.router.navigate(['login']);
+        }
       });
+  }
+
+  scrollToTop(){
+    window.scrollTo(0, 0);
   }
 }
