@@ -3,8 +3,10 @@ const router = express.Router();
 
 const passport = require('passport');
 let helper = require('../lib/helper');
+let mail = require('../lib/mail');
 
 var user = require('../models/user');
+var email = require('../models/email')
 
 router.post('/user', function(req, res){
     var firstName = typeof(req.body.firstName) == 'string' && req.body.firstName.trim().length > 0 ? req.body.firstName : '';
@@ -15,7 +17,7 @@ router.post('/user', function(req, res){
     var state = typeof(req.body.state) == 'string' && req.body.state.trim().length > 0 ? req.body.state : '';
     var address = typeof(req.body.address) == 'string' && req.body.address.trim().length > 0 ? req.body.address : '';
     var lastName = typeof(req.body.lastName) == 'string' && req.body.lastName.trim().length > 0 ? req.body.lastName : '';
-    var zip = typeof(req.body.zip) == 'number' && req.body.zip.length > 0 ? req.body.zip : '';
+    var zip = typeof(req.body.zip) == 'string' && req.body.zip.length > 0 ? req.body.zip : '';
     
     if(firstName && username && email && password && country && state){
         password = helper.hash(password);
@@ -141,4 +143,41 @@ router.post('/login', function(req, res, next) {
       }
   }
 
+  router.post('/email', function(req, res){
+    var from = typeof(req.body.From) == 'string' && req.body.From.trim().length > 0 ? req.body.From : '';
+    var to = typeof(req.body.To) == 'string' && req.body.To.trim().length > 0 ? req.body.To : '';
+    var members = typeof(req.body.members) == 'string' && req.body.members.trim().length > 0 ? req.body.members : '';
+    var onwardsDate = typeof(req.body.onwardsDate) == 'string'  ? req.body.onwardsDate : '';
+    var hotelCategory = typeof(req.body.hotelCategory) == 'string' && req.body.hotelCategory.trim().length > 0 ? req.body.hotelCategory : '';
+    var mealPlan = typeof(req.body.mealPlan) == 'string' && req.body.mealPlan.trim().length > 0 ? req.body.mealPlan : '';
+    var otherComments = typeof(req.body.otherComments) == 'string' && req.body.otherComments.trim().length > 0 ? req.body.otherComments : '';
+    var emailNew = typeof(req.body.email) == 'string' && req.body.email.trim().length > 0 && req.body.email.indexOf('@') > -1 ? req.body.email : '';
+
+    if(from && to && members && onwardsDate){
+        if(emailNew){
+            var newEmail = new email({
+                email : emailNew,
+                from : from,
+                to : to,
+                members : members,
+                onwardsDate : onwardsDate,
+                hotelCategory : hotelCategory,
+                mealPlan : mealPlan,
+                otherComments : otherComments,
+                creationDate : Date.now()
+                });
+            
+                email.saveEmail(newEmail, function(err, data){
+                    console.log(data);
+                    if(err) throw err;
+                });
+                mail.sendEmail(newEmail);
+                res.status(200).json({"success" : "You will be notified with mail based on you request"})
+        } else {
+            res.json({"error" : "email can not be null"});
+        }
+    } else{
+        res.json({"error" : "enter a valid credential or fill the mandatory fields highlighted"});
+    }
+});
 module.exports = router;

@@ -18,8 +18,8 @@ export class SignupComponent implements OnInit {
     "", 
     "", 
     "", 
-    this.countries[0], 
-    this.states[0], 
+    "", 
+    "", 
     "", 
     "", 
     );

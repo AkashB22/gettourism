@@ -17,27 +17,27 @@
     <!-- Example row of columns -->
     <div class="row">
       <div class="col-md-3 border border-0 bg pb-5 pt-5">
-        <h2>Check Availability</h2>
-          <form>
+        <h2>Check For Enquiry</h2>
+          <form  (ngSubmit)="onSubmit()" #enquiryForm="ngForm">
             <div class="form-group">
               <label for="From">From: </label>
-              <select class="form-control" id="state">
-                <option>Coimbatore</option>
-                <option>Bangalore</option>
-                <option>Chennai</option>
-                <option>Pondicherry</option>
-                <option>Mumbai</option>
+              <select class="form-control" id="From" name="From" [(ngModel)]="newEnquiryForm.From" #From="ngModel" required>
+                <option value=''>Choose ..</option>
+                <option *ngFor="let state of states" [value]="state" >{{state}}</option>
               </select>
+              <div class=" alert alert-danger" [hidden]="From.valid || From.untouched">
+                From is required.
+              </div>
             </div>
             <div class="form-group">
-              <label for="To">To: </label>
-              <select class="form-control" id="state">
-                <option>Bangalore</option>
-                <option>Chennai</option>
-                <option>Coimbatore</option>
-                <option>Pondicherry</option>
-                <option>Mumbai</option>
+              <label for="To">Destination: </label>
+              <select class="form-control" id="To" name="To"  [(ngModel)]="newEnquiryForm.To" #To="ngModel" required>
+                <option value=''>Choose ..</option>
+                <option *ngFor="let state of states" [value]="state" >{{state}}</option>
               </select>
+              <div class=" alert alert-danger" [hidden]="To.valid || To.untouched">
+                To is required.
+              </div>
             </div>
             <!-- <div class="form-group">
               <label for="pgName">Select a PG</label>
@@ -48,14 +48,14 @@
               </select>
             </div> -->
             <div class="form-group">
-              <label for="members">Select Number Of Members</label>
-              <select class="form-control" id="members">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <label for="members">Select Number Of Adults</label>
+              <select class="form-control" id="members" name="members"  [(ngModel)]="newEnquiryForm.members" #adultMembers="ngModel" required>
+                <option  value="">Choose..</option>
+                <option *ngFor="let member of members" [value]="member" >{{member}}</option>
               </select>
+              <div class=" alert alert-danger" [hidden]="adultMembers.valid || adultMembers.untouched">
+                members is required.
+              </div>
             </div>
             <!-- <div class="form-group">
               <label for="sharing">Select Your Required Sharing</label>
@@ -67,37 +67,62 @@
               </select>
             </div> -->
             <div class="form-group">
-              <label for="onwardsDate">Onward Date</label>
-              <input type="date" class="form-control" id="onwardsDate">
+              <label for="onwardsDate">Visiting Date</label>
+              <input type="date" class="form-control" id="onwardsDate" name="onwardsDate" [(ngModel)]="newEnquiryForm.onwardsDate" #onwardsDate="ngModel" required>
+              <div class=" alert alert-danger" [hidden]="onwardsDate.valid || onwardsDate.untouched">
+                onwardsDate is required.
+              </div>
             </div>
             <div class="form-group">
-                <label for="returnDate">Return(Optional)</label>
-                <input type="date" class="form-control" id="returnDate">
+              <label for="hotelCategory">Hotel Category: </label>
+              <select class="form-control" id="hotelCategory" name="hotelCategory"  [(ngModel)]="newEnquiryForm.hotelCategory" >
+                <option value=''>Choose..</option>
+                <option *ngFor="let hotelCategory of hotelCategories" [value]="hotelCategory" >{{hotelCategory}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mealPlan">Meal Plan:</label>
+              <select class="form-control" id="mealPlan" name="mealPlan" [(ngModel)]="newEnquiryForm.mealPlan" >
+                <option value="">Choose..</option>
+                <option *ngFor="let mealPlan of mealPlans" [value]="mealPlan" >{{mealPlan}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="otherComments">Other Comments(Specify If Any)</label>
+              <textarea class="form-control" name="otherComments" id="otherComments" [(ngModel)]="newEnquiryForm.otherComments" placeholder="any comments"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="email">email</label>
+              <input class="form-control" name="email" id="email" [(ngModel)]="newEnquiryForm.email" #email="ngModel" readonly>
+              <div class=" alert alert-danger" [hidden]="email.valid || email.untouched">
+                email is required.
               </div>
-            <button type="submit" class="btn btn-success">Book Now</button>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!enquiryForm.form.valid">Send Enquiry</button>
           </form>
       </div>
       <div class="col-md pt-5 pb-5 bg">
         <div class="row pt-5 px-5">
-          <div class="col col-lg-4" id="cf">
+          <div class="col-md-3">
             <!-- <img [src]="imageUrl" class="img-thumbnail" alt="A generic square placeholder image with rounded corners in a figure."> -->
-            
-            <img class="bottom img-thumbnail img-fluid img-responsive" src="/assets/get-tourism-images/logo-grey.jpg" />
-            <img class=" top img-thumbnail img-fluid img-responsive" src="/assets/get-tourism-images/logo.jpg" />
-          
+            <div  id="cf">
+                <img class="bottom img-thumbnail img-fluid img-responsive position-absolute" src="/assets/get-tourism-images/logo.jpg"/>
+                <img class="top img-thumbnail img-fluid img-responsive" src="/assets/get-tourism-images/logo-grey.jpg" />
+            </div>
           </div>
           
-          <div class="col-6">
+          <div class="col-md">
             <p><strong>GETZ Tourism Online Ltd.</strong>
               Official Online travel and tours Booking site operated by GETZ Tourism LTD,India.
               Book a Buses to travel in lowest affordable cost in few steps</p>
+          </div>
+          <div class="row py-5">
             <ul>
-                <li>Enter login details</li>
-                <li>Check Referral Code status</li>
-                <li>See Features</li>
-                <li>Book a seat and apply a coupon code</li>
-                <li>Get a Quote</li>
-                <li>Within 24 hours get a approved booking from us</li>
+                <li class="pt-3 pb-3 text-justify">The more you see, the more you will realize how the world really works. Authentic Experence of cultures and people really will open mind to endless possibilties.You can always read about the wonders of the world in your history books, but picture yourself standing in front of one... this alone is a perfect reasont to travel the world</li>
+                <li class="pt-3 pb-3 text-justify">We beleive traveling around the world shouldn't be hard, it's actually something everyone should be able to do atleast once in their lives</li>
+                <li class="pt-3 pb-3 text-justify">Whether you choose to spend a few weeks or just a couple of days traveling this beautiful planet, It's important to see what;s out there. It's up to you to make the dreams come true and tak the first step.</li>
+                <li class="pt-3 pb-3 text-justify">Why travel? Because you can.</li>
+                <li class="pt-3 pb-3 text-justify">Because you want to. Because it beats the alternative. Why not let us at <strong>GETZ</strong> help you plan and get the bell rolling for your wonderfull memories ahead.</li>
             </ul>
           </div>
         </div>
@@ -105,8 +130,8 @@
             <div class="col-md mt-5">
                 <form class="form-inline">
                     <div class="form-group">
-                      <label for="referralCode" class="sr-only">Enter Your Referral Code</label>
-                      <input type="text" readonly class="form-control-plaintext" id="referralCode" value="Enter Your Referral Code">
+                      <label for="referralCodeLabel" class="sr-only">Enter Your Referral Code</label>
+                      <input type="text" readonly class="form-control-plaintext" id="referralCodeLabel" value="Enter Your Referral Code">
                     </div>
                     <div class="form-group mx-sm-3 mb-2">
                       <label for="referralCode" class="sr-only">Referral Code</label>
