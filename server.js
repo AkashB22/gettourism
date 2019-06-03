@@ -7,7 +7,7 @@ const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://akash:Rajibalu%40123@cluster0-6l2ig.mongodb.net/getzTourism?retryWrites=true',{ useNewUrlParser: true });
+mongoose.connect('mongodb+srv://akash:Rajibalu%40123@cluster0-6l2ig.mongodb.net/test?retryWrites=true',{ useNewUrlParser: true });
 
 //Get the default connection
 var db = mongoose.connection;
