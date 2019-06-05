@@ -14,6 +14,7 @@ import { EnquiryForm } from '../enquiry-form';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  success: any;
   constructor(private domSanitizer : DomSanitizer, private location : Location, private activatedRoute : ActivatedRoute, private addNewUserService : AddnewuserService, private router : Router, private emailService : EmailService, dataService : DataserviceService) {}
 
   imageUrl:String;
@@ -56,6 +57,11 @@ export class HomeComponent implements OnInit {
       this.emailService.sendEmailApi(this.newEnquiryForm).subscribe(
       data=>{
         console.log(data); 
+        if(data.success){
+          this.success= data.sucess;
+        } else{
+          this.error= data.error;
+        }
       },
       error=> {
         console.log(error);

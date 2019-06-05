@@ -18,7 +18,13 @@
     <div class="row">
       <div class="col-md-3 border border-0 bg pb-5 pt-5">
         <h2>Check For Enquiry</h2>
-          <form  (ngSubmit)="onSubmit()" #enquiryForm="ngForm">
+          <form  (ngSubmit)="onSubmit(); enquiryForm.reset(newEnquiryForm)" #enquiryForm="ngForm">
+            <div class="mb-3" *ngIf="formError">
+                <div class="formError"  class="alert alert-danger">{{error}}</div>
+            </div>
+            <div class="mb-3" *ngIf="formError">
+                <div class="formSuccess"  class="alert alert-successs">{{success}}</div>
+            </div>
             <div class="form-group">
               <label for="From">From: </label>
               <select class="form-control" id="From" name="From" [(ngModel)]="newEnquiryForm.From" #From="ngModel" required>
