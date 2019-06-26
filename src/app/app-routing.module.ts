@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
+import { GoogleOauthComponent } from './google-oauth/google-oauth.component'
 
 const routes: Routes = [
   { path:'pgInfo', component: PgDetailsComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path:'login', component: LoginComponent },
   { path:'createOrder', component: CreateOrderComponent },
   { path:'pgDetails', component: PgDetailsComponent },
-  { path:'', redirectTo: '/login' , pathMatch: 'full'}
+  { path: 'auth/google', component: GoogleOauthComponent },
+  { path:'', redirectTo: '/home' , pathMatch: 'full'}
 ];
 
 @NgModule({

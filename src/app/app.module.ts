@@ -14,6 +14,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GoogleOauthComponent } from './google-oauth/google-oauth.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SignupComponent,
     LoginComponent,
     CreateOrderComponent,
+    GoogleOauthComponent,
   ],
   imports: [
     BrowserModule,

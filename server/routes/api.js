@@ -132,6 +132,7 @@ router.post('/login', function(req, res, next) {
   });
 
   router.get('/home', isValidUser, function(req, res){
+    req.session.userDetails = req.user;
     res.status(200).json(req.user);
   });
 
