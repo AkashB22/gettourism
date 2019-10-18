@@ -11,7 +11,7 @@ export class EmailService {
 
   private emailUrl = '/api/email';
   private httpOption = {
-    headers : new HttpHeaders({ 'Contnt-type' : 'application/json'})
+    headers : new HttpHeaders({ 'Content-type' : 'application/json'})
   }
 
   sendEmailApi(emailData): Observable<any>{

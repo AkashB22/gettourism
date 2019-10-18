@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GoogleOauthComponent } from './google-oauth/google-oauth.component';
+import { TestDirective } from './test.directive';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { GoogleOauthComponent } from './google-oauth/google-oauth.component';
     LoginComponent,
     CreateOrderComponent,
     GoogleOauthComponent,
+    TestDirective,
   ],
   imports: [
     BrowserModule,

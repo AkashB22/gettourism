@@ -1,14 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
+const config = require('./config');
+const conf = new config();
+console.log(conf.DB_URI);
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://akash:Rajibalu%40123@cluster0-6l2ig.mongodb.net/test?retryWrites=true',{ useNewUrlParser: true });
-
+//mongoose.connect('mongodb+srv://akash:akash@cluster0-6l2ig.mongodb.net/test?retryWrites=true&w=majority',{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/getzTourism',{ useNewUrlParser: true });
 //Get the default connection
 var db = mongoose.connection;
 
@@ -19,7 +22,9 @@ require('./server/lib/passport-config');
 
 const api = require('./server/routes/api');
 
-const port = 30303;
+const auth = require('./server/routes/auth');
+
+const port = 8060;
 
 const app = express();
 
@@ -29,7 +34,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 app.use(cors({
-    origin:['http:localhost:30303'],
+    origin:['http://localhost:8060'],
     credentials : true
 }));
 
@@ -51,11 +56,12 @@ app.use(passport.session());
 
 
 app.use('/api', api);
+app.use('/auth', auth);
 
 app.get('*', function(req,res){
     res.sendFile(path.join(__dirname,'dist/newProject/index.html'));
 });
 
 app.listen(port, function(){
-    console.log('server running in port 30303');
+    console.log('server running in port ' + port);
 });
