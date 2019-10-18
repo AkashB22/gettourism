@@ -28,7 +28,7 @@
           <a class="nav-link" routerLink='/login' *ngIf="!validUser">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" *ngIf="validUser">{{username}}</a>
+          <a class="nav-link" href="#" *ngIf="validUser">Hello {{username}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink='/login' (click)="logoutUser()" *ngIf="validUser">Logout</a>
