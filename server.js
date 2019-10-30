@@ -10,8 +10,8 @@ const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-//mongoose.connect('mongodb+srv://akash:akash@cluster0-6l2ig.mongodb.net/test?retryWrites=true&w=majority',{ useNewUrlParser: true });
-mongoose.connect('mongodb://localhost:27017/getzTourism',{ useNewUrlParser: true });
+
+mongoose.connect('url',{ useNewUrlParser: true });
 //Get the default connection
 var db = mongoose.connection;
 
