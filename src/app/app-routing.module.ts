@@ -15,7 +15,8 @@ const routes: Routes = [
   { path:'createOrder', component: CreateOrderComponent },
   { path:'pgDetails', component: PgDetailsComponent },
   { path: 'auth/google', component: GoogleOauthComponent },
-  { path:'', redirectTo: '/home' , pathMatch: 'full'}
+  { path:'', redirectTo: '/home' , pathMatch: 'full'},
+  { path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
