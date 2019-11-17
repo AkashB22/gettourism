@@ -25,6 +25,7 @@ db.on('once', ()=>{
 require('./server/lib/passport-config');
 
 const api = require('./server/routes/api');
+const auth = require('./server/routes/auth');
 
 const port = process.env.PORT || 3000;
 
