@@ -5,16 +5,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class EmailService {
+export class GoogleOauthService {
 
   constructor(private http: HttpClient) { }
 
-  private emailUrl = '/api/email';
+  private googleOauthUrl = '/auth/google';
   private httpOption = {
-    headers : new HttpHeaders({ 'Content-type' : 'application/json'})
+    headers : new HttpHeaders({ 'Content-Type' : 'text/plain'})
   }
 
-  sendEmailApi(emailData): Observable<any>{
-   return this.http.post(this.emailUrl, emailData, this.httpOption);
+  googleOauth(): Observable<any>{
+   return this.http.get<any>(this.googleOauthUrl, this.httpOption);
   }
 }

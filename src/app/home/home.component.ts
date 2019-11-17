@@ -15,6 +15,7 @@ import { EnquiryForm } from '../enquiry-form';
 })
 export class HomeComponent implements OnInit {
   success: any;
+  userLoggedIn: boolean;
   constructor(private domSanitizer : DomSanitizer, private location : Location, private activatedRoute : ActivatedRoute, private addNewUserService : AddnewuserService, private router : Router, private emailService : EmailService, dataService : DataserviceService) {}
 
   imageUrl:String;
@@ -47,8 +48,14 @@ export class HomeComponent implements OnInit {
         console.log(data);
         this.emailId = data.email;
         this.newEnquiryForm.email = this.emailId;
+        this.userLoggedIn = true;
       },
-      (error) => {console.log(error); this.router.navigate(['login'])}
+      (error) => {
+        console.log(error); 
+        //this.router.navigate(['login']);
+        this.userLoggedIn = false;
+      }
+      
     )
   }
 
@@ -57,7 +64,9 @@ export class HomeComponent implements OnInit {
       this.emailService.sendEmailApi(this.newEnquiryForm).subscribe(
       data=>{
         console.log(data); 
+        var successDescription = data.success;
         if(data.success){
+          data.sucess = "good service";
           this.success= data.sucess;
         } else{
           this.error= data.error;

@@ -97,9 +97,16 @@
               <label for="otherComments">Other Comments(Specify If Any)</label>
               <textarea class="form-control" name="otherComments" id="otherComments" [(ngModel)]="newEnquiryForm.otherComments" placeholder="any comments"></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group" *ngIf="userLoggedIn">
               <label for="email">email</label>
-              <input class="form-control" name="email" id="email" [(ngModel)]="newEnquiryForm.email" #email="ngModel" readonly>
+              <input class="form-control" type="email" name="email" id="email" [(ngModel)]="newEnquiryForm.email" #email="ngModel" email pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required readonly>
+              <div class=" alert alert-danger" [hidden]="email.valid || email.untouched">
+                email is required.
+              </div>
+            </div>
+            <div class="form-group" *ngIf="!userLoggedIn">
+              <label for="email">email</label>
+              <input class="form-control" type="email" name="email" id="email" [(ngModel)]="newEnquiryForm.email" #email="ngModel" email pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
               <div class=" alert alert-danger" [hidden]="email.valid || email.untouched">
                 email is required.
               </div>
