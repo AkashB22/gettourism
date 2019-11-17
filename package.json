@@ -9,8 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "pree2e": "webdriver-manager update",
-    "preinstall": "npm install -g angular-cli",
-    "postinstall": "ng build && mv dist/* ."
+    "preinstall": "npm install -g @angular/cli",
+    "postinstall": "ng build"
   },
   "private": true,
   "dependencies": {
