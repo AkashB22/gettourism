@@ -7,19 +7,22 @@ const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://akash:Rajibalu%40123@cluster0-6l2ig.mongodb.net/test?retryWrites=true',{ useNewUrlParser: true });
+mongoose.connect('mongodb+srv://akash:yUab2lRcVz6r2Mq8@cluster0-6l2ig.mongodb.net/test?retryWrites=true',{ useNewUrlParser: true });
 
 //Get the default connection
 var db = mongoose.connection;
 
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('once', ()=>{
+    console.log('mongoDB connected')
+});
 
 require('./server/lib/passport-config');
 
 const api = require('./server/routes/api');
 
-const port = 30303;
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -57,5 +60,5 @@ app.get('*', function(req,res){
 });
 
 app.listen(port, function(){
-    console.log('server running in port 30303');
+    console.log('server running in port ' + port);
 });
