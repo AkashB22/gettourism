@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   imageUrl:String;
   flag:boolean;
   error: string;
-  formError: boolean;
+  formError: boolean = false;
+  formSuccess: boolean = false;
   emailId : string;
   newEnquiryForm = new EnquiryForm(
     "", "", "", "", "", "", "", ""
@@ -64,10 +65,9 @@ export class HomeComponent implements OnInit {
       this.emailService.sendEmailApi(this.newEnquiryForm).subscribe(
       data=>{
         console.log(data); 
-        var successDescription = data.success;
+        this.formSuccess = true;
         if(data.success){
-          data.sucess = "good service";
-          this.success= data.sucess;
+          this.success= "Thank you!! " + data.success;
         } else{
           this.error= data.error;
         }

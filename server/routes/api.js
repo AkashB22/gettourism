@@ -174,7 +174,7 @@ router.post('/login', function(req, res, next) {
                 });
                 mail.sendEmail(newEmail, function(err, data){
                     if(err){
-                        res.status(400).json({"error" : "mail is not working"})
+                        res.status(500).json({"error" : err})
                     } else{
                         res.status(200).json({"success" : "You will be notified with mail based on you request"})
                     }
