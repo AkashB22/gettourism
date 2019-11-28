@@ -13,7 +13,7 @@ mail.sendEmail = function(mailDetails, callback){
         });
 
         transporter.sendMail({
-                from: '"GETZTOURISM" <getztourism@getztourism.com>',
+                from: '"GETZTOURISM" <getztourism-c5f63c@inbox.mailtrap.io>',
                 to: "akashbalu22@gmail.com, getztourism@gmail.com",
                 subject: "Enquiry Form ",
                 test: "Enquiry Form has been submitted by"+mailDetails.email,
