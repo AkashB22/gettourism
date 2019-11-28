@@ -172,8 +172,13 @@ router.post('/login', function(req, res, next) {
                     console.log(data);
                     if(err) throw err;
                 });
-                mail.sendEmail(newEmail);
-                res.status(200).json({"success" : "You will be notified with mail based on you request"})
+                mail.sendEmail(newEmail, function(err, data){
+                    if(err){
+                        res.status(400).json({"error" : "mail is not working"})
+                    } else{
+                        res.status(200).json({"success" : "You will be notified with mail based on you request"})
+                    }
+                });
         } else {
             res.json({"error" : "email can not be null"});
         }
