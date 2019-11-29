@@ -2,7 +2,7 @@ const sgMail = require('@sendgrid/mail');
 let mail = {};
 
 mail.sendEmail = function(mailDetails, callback){
-        sgMail.setApiKey('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');
+        sgMail.setApiKey('******************');
         const msg = {
                 from: '"GETZTOURISM" <getztourism@gmail.com>',
                 to: "akashbalu22@gmail.com, getztourism@gmail.com, " + mailDetails.email,
