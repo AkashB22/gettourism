@@ -171,14 +171,17 @@ router.post('/login', function(req, res, next) {
                 email.saveEmail(newEmail, function(err, data){
                     console.log(data);
                     if(err) throw err;
-                });
-                mail.sendEmail(newEmail, function(err, data){
-                    if(err){
-                        res.status(500).json({"error" : err})
-                    } else{
-                        res.status(200).json({"success" : "You will be notified with mail based on you request"})
+                    else{
+                        mail.sendMail(newEmail, function(err, data){
+                            if(err){
+                                res.status(500).json({"error" : err})
+                            } else{
+                                res.status(200).json({"success" : "You will be notified with mail based on you request"})
+                            }
+                        });
                     }
                 });
+                
         } else {
             res.json({"error" : "email can not be null"});
         }
