@@ -36,7 +36,7 @@ User.findById(id, function(err, user) {
 passport.use(new GoogleStrategy(
   {
   //Options for google Strategy
-  callbackURL : '/auth/googleRedirect',
+  callbackURL : 'https://getztourism.herokuapp.com/auth/googleRedirect',
   clientID : '398767980699-9pum8crpefomednucie4ukm03d527qog.apps.googleusercontent.com',
   clientSecret : 'N7KiMminLSVXLKwAFghGZUqB'
   }, function(accessToken, RefreshToken, profile, done){
